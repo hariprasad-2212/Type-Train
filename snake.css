@@ -1,0 +1,227 @@
+body{
+    background-image: url("images/game_background_1.png");
+    background-size: 100vw 100vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgb(143, 192, 134);
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Lilita One', sans-serif;
+    font-family: 'Baloo 2', sans-serif; font-weight: 700;
+    font-family: 'Bubblegum Sans', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.grid{
+    display: grid;
+    grid-template-rows: repeat(16,1fr);
+    grid-template-columns: repeat(16,1fr);
+    background-image: url("images/track_16x16_centered_1.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 91vmin;
+    height: 81vmin;
+    border: transparent;
+}
+
+.trainHead{
+    background-image: url("images/train_topview.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    
+    width: 100%;
+    height: 100%;
+}
+
+.trainBody{
+    background-image: url("images/wagon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.trainCaboose{
+    background-image: url("images/caboose_symmetric.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.coin{
+    background-image: url("images/coin.png");
+    background-size: contain;
+    background-repeat:  no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    border: transparent;
+}
+
+.direction{
+    width: 100%;
+    height: 100%;
+    font-size: clamp(10px,6vmin,20px);
+    color: aliceblue;
+    text-align: center;
+}
+
+.top{
+    width: 100%;
+    height: 100%;
+}
+
+#score{
+    background-image: url("images/score_cloud.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    border: transparent;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width : 200px;
+    height: 130px;
+    background-color: radial-gradient(#3A8E29, transparent 70%);
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#deathMode{
+    background:
+        url("images/mode.png") center / 100% 100% no-repeat,
+        radial-gradient(#3A8E29, transparent 70%);
+    border: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 250px;
+    height: 130px;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    appearance: none;
+    transition: transform 0.35s ease-in-out;
+    font-family: 'Lilita One', sans-serif;
+}
+
+#deathMode:hover{
+    transform: scale(1.08);
+}
+
+
+#unDeathMode {
+    background:
+        url("images/mode.png") center / 110% 110% no-repeat,
+        radial-gradient(#3A8E29, transparent 70%);
+    border: none;
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    width: 250px;
+    height: 130px;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    appearance: none;
+    transition: transform 0.35s ease-in-out;
+    font-family: 'Lilita One', sans-serif;
+}
+
+#unDeathMode:hover{
+    transform: scale(1.08);
+}
+
+#help{
+    background:
+        url("images/mode.png") center / 110% 110% no-repeat,
+        radial-gradient(#3A8E29, transparent 70%);
+    border: none;
+    position: absolute;
+    top: 270px;
+    left: 20px;
+    width: 150px;
+    height: 100px;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    appearance: none;
+    transition: transform 0.35s ease-in-out;
+    font-family: 'Lilita One', sans-serif;
+}
+
+#help:hover{
+    transform: scale(1.08);
+}
+
+.how_to_play{
+    background-image: url("images/how_to_play.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 800px;
+    height: 800px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+
+.strikeThrough{
+    text-decoration: line-through;
+    font-family: 'Lilita One', sans-serif;
+}
+
+.wchars {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+
+    background: rgba(20, 80, 25, 0.95);
+    color: white;
+    font-family: 'Bubblegum Sans', cursive;
+
+    font-size: clamp(20px, 3vw, 40px);
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 20px;
+    overflow: auto;
+    overflow-wrap: anywhere;
+}
