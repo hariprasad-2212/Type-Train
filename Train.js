@@ -10,10 +10,14 @@ function howToPlay(){
 
 }
 help.addEventListener("click",howToPlay);
+
 // sound effects
-const coinSound= new Audio("soundEffect/scoin_effect.wav");
+const coinSound= new Audio("soundEffect/coin_effect.wav");
+coinSound.volume = 0.3;
 const movingSound = new Audio("soundEffect/moving_effect.mp3");
+movingSound.volume = 0.3;
 const whistle = new Audio("soundEffect/whistle_effect.wav");
+whistle.volume = 0.3;
 
 let TrainElements = [];
 
