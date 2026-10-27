@@ -233,45 +233,6 @@ function game(di,a){
     // death mode
     if(death){
         if(hitWalls() || trainCollision()){
-           /* trainHits.play();
-            gameOver = true;
-            let scoreCard = document.createElement("div");
-            scoreCard.innerText = "Wrong typed characters\n";
-            wrongchars.forEach((c) =>{
-                scoreCard.innerText += " " + c;
-            });
-            scoreCard.innerText += "\nScore: " + count;
-            board.replaceChildren(scoreCard);
-            scoreCard.classList.add("wchars");
-            setTimeout(()=>{
-                scoreCard.innerText = "";
-                scoreCard.classList.remove("wchars");
-                board.replaceChildren(
-                    coin,
-                    directionUp,
-                    directionDown,
-                    directionLeft,
-                    directionRight
-                );
-                wrongchars = new Set();
-                count = 0;
-                score.innerText = "Score: " + count;
-                trainArr = [{x:12 , y:12}]
-                di.x = 0;
-                di.y = 0;
-                TrainElements = []
-                angle = 0;
-                gameOver = false;
-                u = "w";
-                d = "s";
-                l = "a";
-                r = "d";
-                topActive = true;
-                leftActive = true;
-                rightActive = true;
-                downActive = false;
-            },5000);
-            */
             resetGame();
         }
     }   
