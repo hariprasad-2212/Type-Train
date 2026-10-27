@@ -7,17 +7,18 @@ let helps = document.querySelector("#help");
 let helpScreen = document.querySelector("#helpScreen");
 function howToPlay(){
     helpScreen.classList.toggle("how_to_play");
-
 }
-help.addEventListener("click",howToPlay);
+help.addEventListener("click",howToPlay); 
 
 // sound effects
 const coinSound= new Audio("soundEffect/coin_effect.wav");
 coinSound.volume = 0.3;
 const movingSound = new Audio("soundEffect/moving_effect.mp3");
-movingSound.volume = 0.3;
+movingSound.volume = 0.4;
 const whistle = new Audio("soundEffect/whistle_effect.wav");
 whistle.volume = 0.3;
+const trainHits = new Audio("soundEffect/train_crash_game_over.mp3");
+trainHits.volume = 0.3;
 
 let TrainElements = [];
 
@@ -82,8 +83,16 @@ let d = "s";
 let l = "a";
 let r = "d";
 
-speed = 5;
+//speed 
+speed = 3;
 paint = 0;
+
+velocity = document.querySelector("input");
+velocity.addEventListener("change",(event) =>{
+    speed = velocity.value;
+    if(speed > 15)
+        speed = 15;
+});
 
 let wrongchars = new Set();
 
@@ -111,8 +120,13 @@ function game(di,a){
     //coin collected 
     if(trainArr[0].y === a.x && trainArr[0].x === a.y){
         coinSound.play();
-        a.x = Math.floor((Math.random()*16)+1);
-        a.y = Math.floor((Math.random()*16)+1);
+
+
+        while(coinLocation()){
+            a.x = Math.floor((Math.random()*16)+1);
+            a.y = Math.floor((Math.random()*16)+1);
+        }
+
         count++;
         score.innerText = "Score: " +  count;
         trainArr.unshift({x : trainArr[0].x + di.x , y : trainArr[0].y + di.y});
@@ -213,10 +227,13 @@ function game(di,a){
         if(trainArr[0].y < 1 || trainArr[0].y > 16){
             trainArr[0].y = (trainArr[0].y < 1? 16 : 1);
         }
+        if(trainCollision())
+            resetGame();
     }
     // death mode
     if(death){
-        if(trainArr[0].x < 1 || trainArr[0].x > 16 || trainArr[0].y < 1 || trainArr[0].y > 16){
+        if(hitWalls() || trainCollision()){
+           /* trainHits.play();
             gameOver = true;
             let scoreCard = document.createElement("div");
             scoreCard.innerText = "Wrong typed characters\n";
@@ -254,6 +271,8 @@ function game(di,a){
                 rightActive = true;
                 downActive = false;
             },5000);
+            */
+            resetGame();
         }
     }   
 
@@ -341,4 +360,68 @@ function right(){
 
 function random(){
     return Math.floor(Math.random()*(122 - 97 + 1) +  97);
+}
+
+
+function trainCollision(){
+    for(let i = 1; i < trainArr.length; i++){
+        if(trainArr[0].x == trainArr[i].x && trainArr[0].y == trainArr[i].y)
+            return true;
+    }
+    return false;
+}
+
+function hitWalls(){
+    if(trainArr[0].x < 1 || trainArr[0].x > 16 || trainArr[0].y < 1 || trainArr[0].y > 16)
+        return true;
+    return false;
+}
+
+function coinLocation(){
+    for(let i = 0; i < trainArr.length; i++){
+        if(trainArr[i].y == apple.x && trainArr[i].x == apple.y)
+            return true;
+    }
+    return false;
+}
+
+function resetGame(){
+    trainHits.play();
+    gameOver = true;
+    let scoreCard = document.createElement("div");
+    scoreCard.innerText = "Wrong typed characters\n";
+    wrongchars.forEach((c) =>{
+        scoreCard.innerText += " " + c;
+    });
+    scoreCard.innerText += "\nScore: " + count;
+    board.replaceChildren(scoreCard);
+    scoreCard.classList.add("wchars");
+    setTimeout(()=>{
+        scoreCard.innerText = "";
+        scoreCard.classList.remove("wchars");
+        board.replaceChildren(
+            coin,
+            directionUp,
+            directionDown,
+            directionLeft,
+            directionRight
+        );
+        wrongchars = new Set();
+        count = 0;
+        score.innerText = "Score: " + count;
+        trainArr = [{x:12 , y:12}]
+        myDir.x = 0;
+        myDir.y = 0;
+        TrainElements = []
+        angle = 0;
+        gameOver = false;
+        u = "w";
+        d = "s";
+        l = "a";
+        r = "d";
+        topActive = true;
+        leftActive = true;
+        rightActive = true;
+        downActive = false;
+    },5000);
 }

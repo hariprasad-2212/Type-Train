@@ -110,6 +110,7 @@ body{
         url("images/mode.png") center / 100% 100% no-repeat,
         radial-gradient(#3A8E29, transparent 70%);
     border: none;
+    outline: none;
     position: absolute;
     top: 20px;
     left: 20px;
@@ -136,6 +137,7 @@ body{
         url("images/mode.png") center / 110% 110% no-repeat,
         radial-gradient(#3A8E29, transparent 70%);
     border: none;
+    outline: none;
     position: absolute;
     top: 150px;
     left: 20px;
@@ -224,4 +226,33 @@ body{
     padding: 20px;
     overflow: auto;
     overflow-wrap: anywhere;
+}
+
+.velocity{
+    background-image: url("images/mode_right.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    border: transparent;
+    position: absolute;
+    top: 150px;
+    right: 20px;
+    width : 250px;
+    height: 130px;
+    background-color: radial-gradient(#3A8E29, transparent 70%);
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    border: none;
+    outline: none;
+    width: 60px;
+    font-family: 'Bubblegum Sans', cursive;
+    font-size: inherit;
+    background: transparent;
 }
